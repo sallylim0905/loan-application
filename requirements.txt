@@ -1,0 +1,6 @@
+Flask
+gunicorn
+joblib
+numpy
+torch==2.4.0  # or whichever version you need
+scikit-learn
