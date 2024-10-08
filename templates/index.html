@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore Loan Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #004481; /* Deep blue */
+            font-size: 2.4rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        input:focus, select:focus {
+            border-color: #004481;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 68, 129, 0.2);
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #004481;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #003366;
+            box-shadow: 0 4px 8px rgba(0, 68, 129, 0.3);
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #004481;
+        }
+
+        .chat-advisor {
+            margin-top: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chat-advisor img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .chat-advisor a {
+            display: inline-block;
+            padding: 15px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-advisor a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: span 1;
+            }
+
+            button {
+                margin-top: 10px;
+            }
+
+            .chat-advisor {
+                flex-direction: column;
+            }
+        }
+
+        /* Footer styling for professional touch */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer a {
+            color: #004481;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Prediction Application</h1>
+
+        <!-- Introductory Text Section -->
+        <div class="intro-text">
+            By submitting this application, you confirm the accuracy of the information provided and consent to the terms and conditions. Our advisors may contact you to discuss further options.
+        </div>
+
+        <form action="/predict" method="POST">
+            <label for="ApplicantIncome">Applicant Income (SGD):</label>
+            <input type="number" id="ApplicantIncome" name="ApplicantIncome" placeholder="Enter your monthly income" required>
+
+            <label for="LoanAmount">Loan Amount (SGD):</label>
+            <input type="number" id="LoanAmount" name="LoanAmount" placeholder="Enter requested loan amount" required>
+
+            <label for="Loan_Amount_Term">Loan Term (months):</label>
+            <input type="number" id="Loan_Amount_Term" name="Loan_Amount_Term" placeholder="Enter loan term in months" required>
+
+            <label for="Credit_History">Credit History:</label>
+            <select id="Credit_History" name="Credit_History" required>
+                <option value="" disabled selected>Select Credit History</option>
+                <option value="1">Good Credit (1)</option>
+                <option value="0">No Credit (0)</option>
+            </select>
+
+            <label for="Gender">Gender:</label>
+            <select id="Gender" name="Gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+
+            <label for="Married">Marital Status:</label>
+            <select id="Married" name="Married" required>
+                <option value="" disabled selected>Select Marital Status</option>
+                <option value="0">Single</option>
+                <option value="1">Married</option>
+            </select>
+
+            <label for="Dependents">Number of Dependents:</label>
+            <input type="number" id="Dependents" name="Dependents" placeholder="Enter number of dependents" required>
+
+            <label for="Education">Education:</label>
+            <select id="Education" name="Education" required>
+                <option value="" disabled selected>Select Education</option>
+                <option value="0">Not Graduate</option>
+                <option value="1">Graduate</option>
+            </select>
+
+            <label for="Self_Employed">Self Employed:</label>
+            <select id="Self_Employed" name="Self_Employed" required>
+                <option value="" disabled selected>Select Employment Status</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="Property_Area">Property Area:</label>
+            <select id="Property_Area" name="Property_Area" required>
+                <option value="" disabled selected>Select Property Area</option>
+                <option value="0">Rural</option>
+                <option value="1">Semiurban</option>
+                <option value="2">Urban</option>
+            </select>
+
+            <button type="submit" class="full-width">Submit Application</button>
+        </form>
+
+        <div id="result">{{ prediction_text }}</div>
+
+        <!-- Chat with Advisor Section -->
+        <div class="chat-advisor">
+            <a href="https://chatgpt.com/g/g-nlsXJmmR3-personal-loan-advisor-for-bank" target="_blank">Chat with Our Advisor</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Singapore Financial Services. All Rights Reserved.</p>
+            <p><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+        </div>
+    </div>
+</body>
+</html>

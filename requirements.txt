@@ -1,6 +1,7 @@
-Flask
-gunicorn
-joblib
-numpy
-torch==2.4.0  # or whichever version you need
-scikit-learn
+Flask==2.1.0
+Flask-SQLAlchemy==2.5.1
+SQLAlchemy==1.4.22
+pandas==1.4.2
+scikit-learn==1.0.2
+numpy==1.21.0
+Werkzeug==2.0.3
