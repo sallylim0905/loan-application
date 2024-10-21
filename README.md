@@ -1,10 +1,9 @@
 # Loan Application System
 
-A simple web-based loan application system to manage and track loan requests efficiently.
+A simple web-based loan application system to manage and check loan requests efficiently.
 
 ## Features
 - User-friendly loan application form with validation  
-- Track loan status on a dashboard  
 - Simple and intuitive UI  
 
 ## Getting Started
