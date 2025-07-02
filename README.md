@@ -1,4 +1,3 @@
-Here's the **modified and complete `README.md`** tailored specifically to your project, including model training and prediction:
 
 ---
 
