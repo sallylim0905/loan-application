@@ -2,7 +2,7 @@
 ---
 
 ````markdown
-# 🏦 Loan Application Prediction System
+🏦 Loan Application Prediction System
 
 A simple web-based machine learning application to predict loan approval using a logistic regression model. Built with Flask and Scikit-learn.
 
