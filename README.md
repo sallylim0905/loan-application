@@ -6,7 +6,7 @@
 
 A simple web-based machine learning application to predict loan approval using a logistic regression model. Built with Flask and Scikit-learn.
 
-## ✨ Features
+✨ Features
 - User-friendly loan application form with input validation  
 - Real-time loan approval prediction  
 - Simple and intuitive UI  
